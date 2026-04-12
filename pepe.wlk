@@ -2,25 +2,43 @@ import categorias.*
 import bonos.*
 
 object pepe {
-	var categoria = gerente
+	var categoria = null
 	var bonoPresentismo = bonoNulo
 	var bonoResultado = bonoNulo
 	var cantidadDeFaltas = 0
 	
-	method cantidadDeFaltas() { return cantidadDeFaltas }
+	method cantidadDeFaltas() { 
+		return cantidadDeFaltas 
+	}
+	method cantidadDeFaltas(_cantidadDeFaltas) {
+		cantidadDeFaltas = _cantidadDeFaltas
+	}
+	method neto() { 
+		return categoria.neto()
+	}
 	
-	// faltan los métodos para poder cambiar la categoria, el bono por presentismo,
-	// el bono por resultados y la cantidad de faltas de Pepe. 
-	
+	method categoria(_categoria) {
+		return categoria = _categoria
+	} 
+
+	//BONOS 
+	method bonoPresentismo() { 
+		return bonoPresentismo
+	}
+	method bonoPresentismo(_bonoPresentismo) { 
+		bonoPresentismo = _bonoPresentismo 
+	}
+	method bonoResultado() { 
+		return bonoResultado
+	}
+	method bonoResultado(_bonoResultado) { 
+		bonoResultado = _bonoResultado 
+	}
+
+
 	method sueldoNeto() { return categoria.neto() }
 	method sueldo() {
-		return self.sueldoNeto() 
-			/* + el bono por presentismo */
-			/* + el bono por resultado */
-		
-		/* notar que todos los bonos entienden el mensaje monto(empleado)
-		 * en este caso ¿quién es el empleado?
-		 */ 
+		return self.sueldoNeto() + bonoPresentismo.valor(self) + self.valorPorResultado()
 	}
 	
 }
